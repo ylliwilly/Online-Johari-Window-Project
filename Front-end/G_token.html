@@ -1,0 +1,43 @@
+﻿
+
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<head>
+<script>
+function getCookie(cname){
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i].trim();
+		if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+	}
+	return "";
+}
+function checkCookie(){
+	var token=getCookie("_token");
+	if (token!="" && token!=null){
+		alert("請妥善保管您的_token" );
+		document.getElementById("demo").innerHTML =token;
+	}
+	else{
+		document.getElementById("demo").innerHTML ="抱歉!無法建立您的_token";
+           alert("發生問題!請點選回上一頁!");
+             }
+}
+
+<!------------------------------->
+</script>
+</head>
+	
+<body>
+<p id="demo"></p>
+<input type="button" name="Submit" onclick="javascript:history.back(-1);" value="返回上一頁">
+<script>
+checkCookie();
+</script>
+</body>
+	
+</html>
+
