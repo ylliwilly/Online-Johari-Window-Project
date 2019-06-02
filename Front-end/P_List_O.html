@@ -1,42 +1,24 @@
-
-<!DOCTYPE html>
 <html>
 <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
-		<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-	<script>
-		function getToken(S){
-				var c = S.trim();
-				var n=c.indexOf("token");
-				if (Boolean(n)==true) { return c.substring((n+8),(n+40)); }
-				else{
-			return "";
-				}
-		}
-		function checkToken(input){
-			var token=getToken(input);
-			if (token!="" && token!=null){
-				setCookie("_token",token,5);
-				alert("設立成功!")
-			}
-			else{
-				document.getElementById("test").innerHTML ="抱歉!無法建立您的_token";
-							 alert("抱歉!無法建立您的_token");
-								 }
-		}
-		function setCookie(cname,cvalue,exdays)
-{
-  var d = new Date();
-  d.setTime(d.getTime()+(exdays*60*1000));
-  var expires = "expires="+d.toGMTString();
-  document.cookie = cname + "=" + cvalue + "; " + expires;
-}
-		</script>
+        <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+        
 <!-- Tocas UI：CSS 與元件 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.3/tocas.css">
 <!-- Tocas JS：模塊與 JavaScript 函式 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.3/tocas.js"></script>
+<script>
+function getCookie(cname){
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i].trim();
+		if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+	}
+	return "";
+}
+</script>
 
 <meta charset="utf-8">
 <title>菜鸟教程(runoob.com)</title>
@@ -53,7 +35,8 @@ background-attachment:fixed;
 </head>
 	
 <body>
-<div style="text-align:right;width:4450px;height:100px;">
+
+	<div style="text-align:right;width:4450px;height:100px;">
 		<div class="ts grid">
 				<div class="one wide column"><button class="ts button" id='善表達' onclick="check('善表達')" >善表達</button></div>
 				<div class="one wide column"><button class="ts button" id='愛冒險' onclick="check('愛冒險')">愛冒險</button></div>
@@ -178,8 +161,8 @@ background-attachment:fixed;
 </div>
 ---------------
 <script>
-var N_name;
-N_name= prompt("请输入你的名字:","");
+//var N_name;
+//N_name= prompt("请输入你的名字:","");
 var test=["nothing"];
 var count=0;
 var x = document.getElementById("Sumbit");
@@ -200,18 +183,19 @@ alert ("函数已执行2!");
 	var response =this.responseText;
         console.log(response);
 				document.getElementById("test").innerHTML=response; 
-				checkToken(response);
+
       } 
 	else {
         alert('There was a problem with the request.');
       }
     }
 }
-  t_Request.open("POST","http://csmu.oxygentw.net/tools/ap-apiv1/new/"/*"http://localhost/api/new.php"*/,true);
+  t_Request.open("POST","http://csmu.oxygentw.net/tools/ap-apiv1/add/"/*"http://localhost/api/add.php"*/,true);
   t_Request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	var myJSON = JSON.stringify(test);
-  t_Request.send("nickname="+N_name+"&trait="+ myJSON);
-  setTimeout(function(){location.href='G_token.html'},1000);
+	var myJSON = JSON.parse(test);
+    var O_token=getCookie("_token");
+  t_Request.send("token="+O_token+"&trait="+ myJSON);
+  setTimeout(function(){location.href='Count_1.html'},1000);
 	}
 	
 

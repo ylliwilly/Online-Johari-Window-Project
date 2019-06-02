@@ -1,0 +1,279 @@
+<html>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+<!-- Tocas UI：CSS 與元件 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.3/tocas.css">
+<!-- Tocas JS：模塊與 JavaScript 函式 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.3/tocas.js"></script>
+<script type="text/javascript" >
+ function check_all()
+ {     
+     for(var i=1;i<=3;i++){
+     var N="toggle"+i;
+     document.getElementById(N).checked=true;}
+     document.getElementById("A_Check").setAttribute("class","ts active button");
+ }
+ function getCookie(cname){
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i].trim();
+		if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+	}
+	return "";
+}
+function CheckContent(N,ccname){
+var test=getCookie(ccname);
+if (test!="" && test!=null){
+    document.getElementsByName(N)[0].innerHTML=test;
+    var x=unescape(test);
+var y=(test.split(",") + "<p>");
+    var c='\u005b\u0022\u5584\u8868\u9054\u0022\u002c\u0022\u5ff5\u820a\u0022\u002c\u0022\u771f\u8aa0\u0022\u005d';
+    var y=unescape(["\u5584\u8868\u9054","\u5ff5\u820a","\u771f\u8aa0"]);
+    document.getElementById('ooxx').innerHTML=x;
+	}
+	else{
+		document.getElementsByName(N)[0].innerHTML="尚未建立";
+}
+}
+</script>
+</head>
+<head>
+<style>
+td.W{
+
+   background-color:sandybrown;
+   color:black;
+
+}
+
+div.b
+{
+    border:30px solid transparent;
+    width:200px;
+    padding:10px 30px;
+}
+ #round{
+
+ -webkit-border-image:url(Picture/5ac1ec7ec581b.png) 500 420 stretch;
+    -o-border-image:url(Picture/5ac1ec7ec581b.png) 500 420  stretch;
+    border-image:url(Picture/5ac1ec7ec581b.png) 500 420   stretch;
+
+
+ }
+ .base{
+   border:5px groove yellow;
+   width:60%;
+   border-collapse: collapse;
+   box-shadow: 10px 10px 5px #888888;
+
+}
+#th_b
+{
+ border:5px groove yellow;
+ border-color:green;
+ height:50px;
+    background-color:green;
+    color:white;
+}
+#td_b
+{
+ border:5px groove yellow;
+ text-align:left;
+ height:100px;
+}
+.S_s {
+       width: 300px;
+       height: 100px;
+       border: 1px solid blue;
+   }
+  
+   .S_d {
+       width: 300px;
+       height: 100px;
+       border: 1px solid red;
+   }
+</style>
+</head>
+
+<body>
+        <p id="ooxx"></p>
+   <div class="b" id="round">以下為您的結果:</div>
+   --------------------
+<table class="base">
+<tr>
+ <td cid="b">????????????????????????</td>
+<th id="th_b" >自己知道</th>
+<th id="th_b">自己未知</th>
+</tr>
+<tr>
+ <th id="th_b">他人知道</th>
+<td id="td_b" name="O">開放我<a href="P_List_O.html">(編輯)</a></td>
+<td id="td_b" name="Ct">盲目我</td>
+</tr>
+<tr>
+ <th id="th_b">他人未知</th>
+<td  id="td_b" class="W" ><p name="H">隱藏我<p></td>
+<td  id="td_b" class="W" name="U">未知我</td>
+</tr>
+</table>
+-------------
+<script>
+    //CheckContent("O","開放我");
+      CheckContent("H","隱藏我");
+   // CheckContent("Ct","盲目我");
+   // CheckContent("U","未知我");
+ </script>
+-------------
+<div style="border-width:1px;border-style:solid;">
+   測試邊框樣式
+   </div>
+<table>
+<tr><td><div class="S_s">这个是个较小的框 (width 为 300px ，height 为 100px)。 </div></td><td>
+<div class="S_d">这个是个较大的框 (width 为 300px ，height 为 100px)。</div></td></tr>
+</table>
+<table style="border-width:3px;
+border-color:#FFAC55;
+border-style:solid;"
+cellpadding="10" border='1' >
+<tr><td>這是表格欄位</td><td>這是表格欄位</td><td>這是表格欄位</td></tr>
+</table>
+
+
+<table style="border-width:3px;
+border-style:dashed;
+border-top-style:hidden; border-bottom-style:hidden;
+border-color:#FFD382;"
+cellpadding="10" border='1'>
+<tr><td>這是表格欄位</td><td>1</td><td>4564646</td></tr>
+</table>
+
+<table style="border-width:3px;
+border-style:dashed;
+border-color:#FFD382;"
+cellpadding="10" border='1'>
+<tr><td>這是表格欄位</td><td>這是表格欄位</td><td>這是表格欄位</td></tr>
+</table>
+<table class="ts very basic collapsing celled table">
+<thead>
+<tr>
+   <th>填寫者</th>
+   <th>填寫項目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+   <td>
+       <h6 class="ts image header">
+           <img class="ts mini rounded image" src="Picture/user.png">
+           <div class="content">
+               暱稱
+               <div class="sub header">自己</div>
+           </div>
+       </h6>
+   </td>
+   <td>
+       自我認為
+   </td>
+</tr>
+<tr>
+   <td>
+       <h6 class="ts image header">
+           <img class="ts mini rounded image" src="Picture/user.png">
+           <div class="content">
+               暱稱
+               <div class="sub header">他人</div>
+           </div>
+       </h6>
+   </td>
+   <td>
+       他人認為
+   </td>
+</tr>
+</tbody>
+</table>
+<table class="ts definition table">
+<thead>
+   <tr>
+       <th></th>
+       <th>自己知道</th>
+       <th>自己未知</th>
+   </tr>
+</thead>
+<tbody>
+   <tr>
+       <td>他人知道</td>
+       <td>title[<em>string</em>]</td>
+       <td>輸出網頁標頭。</td>
+   </tr>
+   <tr>
+       <td>他人未知</td>
+       <td class="warning">path[<em>string</em>], name[<em>string</em>[<em>optional</em>]]</td>
+       <td class="warning">於網頁最底部輸出內容，可同時儲存內容至一個檔案。</td>
+   </tr>
+</tbody>
+</table>
+<br>
+<table class="ts compact celled definition table">
+<thead>
+   <tr>
+       <th></th>
+       <th>暱稱</th>
+       <th>填寫日期</th>
+      
+   </tr>
+</thead>
+<tbody>
+   <tr>
+       <td class="collapsing">
+           <div class="ts toggle checkbox">
+               <input type="checkbox" id="toggle1">
+               <label for="toggle1"></label>
+           </div>
+       </td>
+       <td>暱稱</td>
+       <td>日期</td>
+      
+   </tr>
+   <tr>
+       <td class="collapsing">
+           <div class="ts toggle checkbox">
+               <input type="checkbox" id="toggle2">
+               <label for="toggle2"></label>
+           </div>
+       </td>
+       <td>暱稱</td>
+       <td>日期</td>
+     
+   </tr>
+   <tr>
+       <td class="collapsing">
+           <div class="ts toggle checkbox">
+               <input type="checkbox" id="toggle3">
+               <label for="toggle3"></label>
+           </div>
+       </td>
+       <td>暱稱</td>
+       <td>日期</td>
+      
+   </tr>
+</tbody>
+<tfoot class="full-width">
+   <tr>
+       <th></th>
+       <th colspan="2">
+           <div class="ts small button">
+                   <input type="submit" value="提交">
+           </div>
+           <button class="ts small button" onclick="check_all()" id="A_Check">
+               全部選取
+           </button>
+           <div class="ts right floated small primary labeled icon button">
+                   <i class="user icon"></i> 新增
+               </div>
+       </th>
+   </tr>
+</tfoot>
+</table> 
+</body>
+</html>

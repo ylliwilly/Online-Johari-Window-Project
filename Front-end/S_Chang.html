@@ -1,0 +1,102 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Tocas UI�GCSS �P���� -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.3/tocas.css">
+<!-- Tocas JS�G�Ҷ��P JavaScript �禡 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.3/tocas.js"></script>
+<script>
+  function htmldecode(Str){
+    var div = document.createElement('div');
+    div.innerHTML = Str;
+    return div.innerText || div.textContent;
+}
+function getCookie(cname){
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i].trim();
+		if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+	}
+	return "";
+}
+function Get(I,S,I_E){
+				var c = I.trim();
+				var n=c.indexOf(S);
+        var m=c.indexOf(I_E);
+        var Num=S.length;
+				if (Boolean(n)==true) { return c.substring((n+Num+2),(m-2)); }
+				else{
+			return "";
+				}
+		}
+function setCookie(cname,cvalue,exmins)
+{
+  var d = new Date();
+  d.setTime(d.getTime()+(exmins*60*1000));
+  var expires = "expires="+d.toGMTString();
+  document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+</script>
+</head>
+<body >
+		<table width="1500" height="600" >
+      
+				<tr ><td align="center">
+					<p><button class="ts primary button" id="Result">察看結果</button></p>
+					
+					<p><button class="ts inverted button" id="O_List">(他人)填選</button></p>
+				</td>></tr>
+	<br>
+	<br>
+	</table>
+<script>
+
+  var S_token=getCookie("_token");    
+    var x = document.getElementById("Result");
+x.addEventListener("click", makeRequest);
+    var y = document.getElementById("O_List");
+y.addEventListener("click", Convert);
+
+  function makeRequest() {
+ alert ("函数已执行1!");
+    t_Request = new XMLHttpRequest();
+
+    if (!t_Request) {
+      alert('Giving up :( Cannot create an XMLHTTP instance');
+      return false;
+    }
+    t_Request.onreadystatechange =function(){
+alert ("函数已执行2!");
+    if (t_Request.readyState == XMLHttpRequest.DONE) {
+      if (t_Request.status == 200) {
+	var response =this.responseText;
+  var R_After_Decode=htmldecode(response)
+        console.log(R_After_Decode); 
+  var H_Me=Get(R_After_Decode,"hiddenMe","cantSeeMe");
+  var O_Me=Get(R_After_Decode,"openMe","hiddenMe");
+  var Ct_Me=Get(R_After_Decode,"cantSeeMe","unknownMe");
+  //var U_Me=Get(response,"unknownMe");
+  setCookie("開放我",O_Me,5);
+  setCookie("隱藏我",H_Me,5);
+  setCookie("盲目我",Ct_Me,5);
+  //setCookie("未知我",U_Me,5);
+      } 
+	else {
+        alert('There was a problem with the request.');
+      }
+    }
+}
+  t_Request.open("POST","http://csmu.oxygentw.net/tools/ap-apiv1/result/"/*"http://localhost/api/new.php"*/,true);
+  t_Request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  alert(S_token);
+  t_Request.send("token="+S_token);
+  
+  setTimeout(function(){location.href='Result.html'},1000);
+	}
+    function Convert(){
+        location.href='P_List_O.html';
+    }
+</script>
+</body>
+</html>
