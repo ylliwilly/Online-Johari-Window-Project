@@ -46,7 +46,7 @@ function setCookie(cname,cvalue,exmins)
 					<p><button class="ts primary button" id="Result">察看結果</button></p>
 					
 					<p><button class="ts inverted button" id="O_List">(他人)填選</button></p>
-				</td>></tr>
+				</td></tr>
 	<br>
 	<br>
 	</table>
@@ -71,7 +71,7 @@ alert ("函数已执行2!");
     if (t_Request.readyState == XMLHttpRequest.DONE) {
       if (t_Request.status == 200) {
 	var response =this.responseText;
-  var R_After_Decode=htmldecode(response)
+var R_After_Decode=htmldecode(response)
         console.log(R_After_Decode); 
   var H_Me=Get(R_After_Decode,"hiddenMe","cantSeeMe");
   var O_Me=Get(R_After_Decode,"openMe","hiddenMe");
@@ -80,7 +80,7 @@ alert ("函数已执行2!");
   setCookie("開放我",O_Me,5);
   setCookie("隱藏我",H_Me,5);
   setCookie("盲目我",Ct_Me,5);
-  //setCookie("未知我",U_Me,5);
+  setCookie("未知我",U_Me,5);
       } 
 	else {
         alert('There was a problem with the request.');

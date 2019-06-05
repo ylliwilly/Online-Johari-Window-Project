@@ -18,9 +18,9 @@ background-image:url( 'http://localhost/Picture/59614538_p0_master1200.jpg' );
 
 <table width="1450" height="650">
 　<tr><td align="center" valign="center">
-
-<div class="ts action input">
-<input type="text" placeholder="輸入_token" id="token_V">
+<P id="Display"><p>
+<div class="ts action input" id="S_Change" >
+<input type="text" placeholder="輸入_token" id="Input_S">
 <button class="ts primary labeled icon button" id="Search" target="main">
         <i class="search icon"></i>查詢</button>
 </div>
@@ -59,23 +59,66 @@ background-image:url( 'http://localhost/Picture/59614538_p0_master1200.jpg' );
 
 ----------------
 <script>
-
 var x = document.getElementById("Search");
-x.addEventListener("click",Store);
-function Store()
+var y=document.getElementById("Input_S");
+//x.addEventListener("click",C_Store);
+x.addEventListener("click",makeRequest);
+y.addEventListener("click",Change);
+
+function Change(){
+  document.getElementById("S_Change").className = "ts action input";
+  document.getElementById("Display").innerHTML="";
+}
+/*function Store()
 {
     var T_V=document.getElementById('token_V').value;
     alert(T_V);
-    setCookie("_token",T_V,10);
+    setCookie("_token",T_V,1);
     window.location.assign("S_Chang.html");
-}
+}*/
 function setCookie(cname,cvalue,exdays)
 {
   var d = new Date();
-  d.setTime(d.getTime()+(exdays*60*1000));
+  d.setTime(d.getTime()+(exdays*60*60*1000));
   var expires = "expires="+d.toGMTString();
   document.cookie = cname + "=" + cvalue + "; " + expires;
 }
+function makeRequest() {
+ alert ("函数已执行1!");
+    t_Request = new XMLHttpRequest();
+
+    if (!t_Request) {
+      alert('Giving up :( Cannot create an XMLHTTP instance');
+      return false;
+    }
+    t_Request.onreadystatechange =function(){
+alert ("函数已执行2!");
+    if (t_Request.readyState == XMLHttpRequest.DONE) {
+      if (t_Request.status == 200) {
+	var response =this.responseText;
+  //var R_After_Decode=htmldecode(response);
+        console.log(response);
+        var Judage=response.search('"success":"false"');
+        if(Judage!=-1){
+            document.getElementById("S_Change").className = "ts error input"
+            document.getElementById("Display").innerHTML= "輸入錯誤";
+        }
+        else{
+          setCookie("_token",T_V,1);
+          window.location.assign("S_Chang.html");
+        }
+      } 
+	else {
+        alert('There was a problem with the request.');
+      }
+    }
+}
+  t_Request.open("POST","http://csmu.oxygentw.net/tools/ap-apiv1/result/"/*"http://localhost/api/new.php"*/,true);
+  t_Request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  var T_V=document.getElementById('Input_S').value;
+    alert(T_V);
+  t_Request.send("token="+T_V);
+	}
 </script>
 </body>
 </html>

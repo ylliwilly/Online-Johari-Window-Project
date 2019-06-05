@@ -25,12 +25,18 @@
 function CheckContent(N,ccname){
 var test=getCookie(ccname);
 if (test!="" && test!=null){
+    test = JSON.parse(test);
     document.getElementsByName(N)[0].innerHTML=test;
-    var x=unescape(test);
-var y=(test.split(",") + "<p>");
+    /*var x=test.substring(1,(test.length-1));
+    while(true){
+        var n=test.search('"');
+        if (n!=-1) { x=x.replace('"',""); }
+        else{break;}
+    }*/
+/*var y=(test.split(",") + "<p>");
     var c='\u005b\u0022\u5584\u8868\u9054\u0022\u002c\u0022\u5ff5\u820a\u0022\u002c\u0022\u771f\u8aa0\u0022\u005d';
-    var y=unescape(["\u5584\u8868\u9054","\u5ff5\u820a","\u771f\u8aa0"]);
-    document.getElementById('ooxx').innerHTML=x;
+    var y=unescape(["\u5584\u8868\u9054","\u5ff5\u820a","\u771f\u8aa0"]);*/
+    //document.getElementById('ooxx').innerHTML=x;
 	}
 	else{
 		document.getElementsByName(N)[0].innerHTML="尚未建立";
@@ -119,10 +125,10 @@ div.b
 </table>
 -------------
 <script>
-    //CheckContent("O","開放我");
-      CheckContent("H","隱藏我");
-   // CheckContent("Ct","盲目我");
-   // CheckContent("U","未知我");
+    CheckContent("O","開放我");
+    CheckContent("H","隱藏我");
+    CheckContent("Ct","盲目我");
+    CheckContent("U","未知我");
  </script>
 -------------
 <div style="border-width:1px;border-style:solid;">

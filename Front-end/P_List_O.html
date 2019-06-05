@@ -155,9 +155,8 @@ background-attachment:fixed;
 <p id="demo"></p>
 <p id="test">我存在</p>
 <br><br>
-<!--onclick="location.href='G_token.html'"-->
-<input type="button" class="ts primary button" value="送出"  target="main" id="Sumbit">
-<!--a href="G_token" target="main" title=""送出/a-->
+<input type="button" class="ts primary button" value="送出" target="main" id="Sumbit">
+<!--a href="G_token" target="main" title=""送出-->
 </div>
 ---------------
 <script>
@@ -192,10 +191,11 @@ alert ("函数已执行2!");
 }
   t_Request.open("POST","http://csmu.oxygentw.net/tools/ap-apiv1/add/"/*"http://localhost/api/add.php"*/,true);
   t_Request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	var myJSON = JSON.parse(test);
+	var myJSON =  JSON.stringify(test);
     var O_token=getCookie("_token");
   t_Request.send("token="+O_token+"&trait="+ myJSON);
-  setTimeout(function(){location.href='Count_1.html'},1000);
+  setTimeout(function(){location.href='S_Chang.html'},2000);
+
 	}
 	
 
