@@ -39,15 +39,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.3/tocas.js"></script>
 
 <meta charset="utf-8">
-	<title>菜鸟教程(runoob.com)</title>
+
 </head>
 <head>
 
 <style>
 body{
-background-image:url( 'http://localhost/Picture/S__7438635.jpg' );
-background-repeat:repeat-x;
-background-attachment:fixed;
+background-image:url( 'http://localhost/Picture/P_List.jpg' );
+background-repeat:no-repeat;
+background-attachment:local;
+background-position: center;
+background-size: cover;
 }
 </style>
 </head>
@@ -194,18 +196,17 @@ x.addEventListener("click", makeRequest);
     }
     t_Request.onreadystatechange =function(){
 alert ("函数已执行2!");
-    if (t_Request.readyState == XMLHttpRequest.Dfive) {
+    if (t_Request.readyState == XMLHttpRequest.DONE) {
       if (t_Request.status == 200) {
 	var response =this.responseText;
         console.log(response);
-				document.getElementById("test").innerHTML=response; 
 				checkToken(response);
       } 
 	else {
         alert('There was a problem with the request.');
       }
     }
-}
+		}
   t_Request.open("POST","http://csmu.oxygentw.net/tools/ap-apiv1/new/"/*"http://localhost/api/new.php"*/,true);
   t_Request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	var myJSON = JSON.stringify(test);

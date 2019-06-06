@@ -68,7 +68,7 @@ y.addEventListener("click", Convert);
     }
     t_Request.onreadystatechange =function(){
 alert ("函数已执行2!");
-    if (t_Request.readyState == XMLHttpRequest.DONE) {
+    if (t_Request.readyState == MXLHttpRequest.DONE) {
       if (t_Request.status == 200) {
 	var response =this.responseText;
 var R_After_Decode=htmldecode(response)
