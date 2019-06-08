@@ -24,13 +24,15 @@ background-size:cover;
 
 <table width="1450" height="650">
 　<tr><td align="center" valign="center">
-<P id="Display"><p>
 <div class="ts action input" id="S_Change" >
 <input type="text" placeholder="輸入_token" id="Input_S">
 <button class="ts primary labeled icon button" id="Search" target="main">
         <i class="search icon"></i>查詢</button>
 </div>
-
+<div class="ts hidden message" id=Display>
+    <div class="header">輸入錯誤</div>
+    <p>請查明後重新輸入</p>
+</div>
 </form>
 </td></tr>
 </table>
@@ -73,7 +75,7 @@ y.addEventListener("click",Change);
 
 function Change(){
   document.getElementById("S_Change").className = "ts action input";
-  document.getElementById("Display").innerHTML="";
+  document.getElementById("Display").className="ts hidden message";
 }
 /*function Store()
 {
@@ -107,7 +109,7 @@ alert ("函数已执行2!");
         var Judage=response.search('"success":"false"');
         if(Judage!=-1){
             document.getElementById("S_Change").className = "ts error input"
-            document.getElementById("Display").innerHTML= "輸入錯誤";
+            document.getElementById("Display").className= "ts negative message";
         }
         else{
           setCookie("_token",T_V,1);
@@ -116,6 +118,7 @@ alert ("函数已执行2!");
       } 
 	else {
         alert('There was a problem with the request.');
+        document.getElementById("Display").className= "ts negative message";
       }
     }
 }
