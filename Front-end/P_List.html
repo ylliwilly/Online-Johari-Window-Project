@@ -48,13 +48,57 @@ body{
 background-image:url( 'http://localhost/Picture/P_List.jpg' );
 background-repeat:no-repeat;
 background-attachment:local;
-background-position: center;
+background-position: center bottom;
 background-size: cover;
 }
 </style>
 </head>
 	
 <body>
+		<div class="ts grid">
+				<div class="fifteen column row"><div class="column"></div></div>
+				<div class="fifteen column row">
+			<div class="column">
+<div class="ts steps">
+		<div class="step">
+			<i class="write icon"></i>
+			<div class="content">
+				<div class="title">填寫</div>
+				<div class="description">周哈里窗表單</div>
+			</div>
+		</div>
+		<div class="disabled  step">
+			<i class="clone icon"></i>
+			<div class="content">
+				<div class="title">複製</div>
+				<div class="description">請記住代碼</div>
+			</div>
+		</div>
+		<div class="disabled  step">
+			<i class="search icon"></i>
+			<div class="content">
+				<div class="title">查詢</div>
+				<div class="description">貼上您的代碼</div>
+			</div>
+		</div>
+		<div class="disabled  step">
+				<i class="add user icon"></i>
+				<div class="content">
+					<div class="title">他人填寫</div>
+					<div class="description">請您的好友或家人為您填寫</div>
+				</div>
+			</div>
+			<div class="disabled step">
+					<i class="info icon"></i>
+					<div class="content">
+						<div class="title">結果</div>
+						<div class="description">觀看您的結果</div>
+					</div>
+				</div>	
+	</div>
+</div>
+</div>
+</div>
 		<div class="ts grid">
 				<div class="three wide column"></div>
  <div class="eleven wide column">
@@ -68,7 +112,7 @@ background-size: cover;
 				<div class="row">
 			<div class="six wide column"></div>
 						<div class="five wide column">
-								<span style="font-family:fantasy;font-size:1.2cm;color:	#f1e1ff;">周哈里窗表單</span>
+								<span style="font-family:fantasy;font-size:1.2cm;color:#d200d2;">周哈里窗表單</span>
 			</div>
 			</div>
 	<div class="five column row">
@@ -187,7 +231,7 @@ var x = document.getElementById("Sumbit");
 x.addEventListener("click", makeRequest);
 
   function makeRequest() {
- alert ("函数已执行1!");
+
     t_Request = new XMLHttpRequest();
 
     if (!t_Request) {
@@ -195,7 +239,7 @@ x.addEventListener("click", makeRequest);
       return false;
     }
     t_Request.onreadystatechange =function(){
-alert ("函数已执行2!");
+		
     if (t_Request.readyState == XMLHttpRequest.DONE) {
       if (t_Request.status == 200) {
 	var response =this.responseText;

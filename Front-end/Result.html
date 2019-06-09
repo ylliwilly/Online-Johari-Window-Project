@@ -24,40 +24,60 @@
 }
 function CheckContent(N,ccname){
 var test=getCookie(ccname);
-if (test!="" && test!=null){
-    test = JSON.parse(test);
-    document.getElementsByName(N)[0].innerHTML=test;
-    /*var x=test.substring(1,(test.length-1));
-    while(true){
-        var n=test.search('"');
-        if (n!=-1) { x=x.replace('"',""); }
-        else{break;}
-    }*/
-/*var y=(test.split(",") + "<p>");
-    var c='\u005b\u0022\u5584\u8868\u9054\u0022\u002c\u0022\u5ff5\u820a\u0022\u002c\u0022\u771f\u8aa0\u0022\u005d';
-    var y=unescape(["\u5584\u8868\u9054","\u5ff5\u820a","\u771f\u8aa0"]);*/
-    //document.getElementById('ooxx').innerHTML=x;
+var x=document.getElementsByName(N)[0];
+test = JSON.parse(test);
+if (test!="" && test!=null&&test!="???"){
+    x.innerHTML=test;
+    x.style.fontsize="xx-large";
 	}
-	else{
-		document.getElementsByName(N)[0].innerHTML="尚未建立";
-}
+    else if(test==""){x.innerHTML="無";
+    x.style.color="#9d9d9d";}
+    else if(test=="???"){x.innerHTML=test;
+    x.style.color="#9d9d9d";}
+	    else{
+            x.innerHTML="尚未建立";
+            x.style.color="#ff0000";
+            }
 }
 </script>
 </head>
 <head>
 <style>
-td.W{
 
-   background-color:sandybrown;
-   color:black;
-
+body{
+background-image:url( 'http://localhost/Picture/S__7438635.jpg' );
+background-repeat:no-repeat;
+background-attachment:local;
+background-position: center;
+background-size:cover;
+			}
+td.B_g1{
+    background-image:url('http://localhost/Picture/images.jpg');
+    background-repeat:no-repeat;
+    background-attachment:local;
+    background-position: center;
+    background-size:cover;
 }
-
+td.B_g2{
+    background-image:url('http://localhost/Picture/下載.jpg');
+    background-repeat:no-repeat;
+    background-attachment:local;
+    background-position: center;
+    background-size:cover;
+    color:	#c6a300;
+}
 div.b
 {
     border:30px solid transparent;
     width:200px;
     padding:10px 30px;
+    color:#f1e1ff;
+    
+    background-image:url( 'http://localhost/Picture/images (1).jpg' );
+background-repeat:no-repeat;
+background-attachment:local;
+background-position: center;
+background-size:cover;
 }
  #round{
 
@@ -87,7 +107,9 @@ div.b
  border:5px groove yellow;
  text-align:left;
  height:100px;
+
 }
+
 .S_s {
        width: 300px;
        height: 100px;
@@ -103,34 +125,85 @@ div.b
 </head>
 
 <body>
-        <p id="ooxx"></p>
-   <div class="b" id="round">以下為您的結果:</div>
-   --------------------
+        <div class="ts grid">
+				<div class="fifteen column row"><div class="column"></div></div>
+				<div class="fifteen column row">
+			<div class="column">
+<div class="ts  steps">
+		<div class="step">
+			<i class="write icon"></i>
+			<div class="content">
+				<div class="title">填寫</div>
+				<div class="description">周哈里窗表單</div>
+			</div>
+		</div>
+		<div class="ts step">
+			<i class="clone icon"></i>
+			<div class="content">
+				<div class="title">複製</div>
+				<div class="description">請記住代碼</div>
+			</div>
+		</div>
+		<div class="ts step">
+			<i class="search icon"></i>
+			<div class="content">
+				<div class="title">查詢</div>
+				<div class="description">貼上您的代碼</div>
+			</div>
+		</div>
+		<div class="ts step">
+				<i class="add user icon"></i>
+				<div class="content">
+					<div class="title">他人填寫</div>
+					<div class="description">請您的好友或家人為您填寫</div>
+				</div>
+			</div>
+			<div class="active step">
+					<i class="info icon"></i>
+					<div class="content">
+						<div class="title">結果</div>
+						<div class="description">觀看您的結果</div>
+					</div>
+				</div>	
+	</div>
+</div>
+</div>
+</div>
+<table width="1450" height="550">
+		<tr><td align="center" valign="center">
+   <div  id="round" class="b">以下為您的結果:</div>
+        </td></tr>
+        <tr><td align="center" valign="center">
 <table class="base">
 <tr>
- <td cid="b"></td>
+ <td id="td_b" class="B_g1" ></td>
 <th id="th_b" >自己知道</th>
 <th id="th_b">自己未知</th>
 </tr>
 <tr>
- <th id="th_b">他人知道</th>
-<td id="td_b" name="O">開放我<a href="P_List_O.html">(編輯)</a></td>
-<td id="td_b" name="Ct">盲目我</td>
+ <th id="th_b">他人知道<a href="P_List_O.html">(編輯)</a></th>
+<td id="td_b" class="B_g2" name="O">開放我</td>
+<td id="td_b" class="B_g2"  name="Ct">盲目我</td>
 </tr>
 <tr>
  <th id="th_b">他人未知</th>
-<td  id="td_b" class="W" ><p name="H">隱藏我<p></td>
-<td  id="td_b" class="W" name="U">未知我</td>
+<td  id="td_b" class="B_g2" name="H" >隱藏我</td>
+<td  id="td_b" class="B_g2" name="U">未知我</td>
 </tr>
 </table>
--------------
+</td></tr>
+<tr><td align="center" valign="center">
+        <button class="ts pulsing button" name="Submit" onclick="javascript:history.back(-1);">返回上一頁</button>
+</td></tr>
+</table>
 <script>
     CheckContent("O","開放我");
     CheckContent("H","隱藏我");
     CheckContent("Ct","盲目我");
     CheckContent("U","未知我");
  </script>
--------------
+
+<!--
 <div style="border-width:1px;border-style:solid;">
    測試邊框樣式
    </div>
@@ -280,6 +353,7 @@ cellpadding="10" border='1'>
        </th>
    </tr>
 </tfoot>
-</table> 
+</table>
+--> 
 </body>
 </html>

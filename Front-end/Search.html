@@ -21,8 +21,51 @@ background-size:cover;
 </head>
 
 <body>
-
-<table width="1450" height="650">
+		<div class="ts grid">
+				<div class="fifteen column row"><div class="column"></div></div>
+				<div class="fifteen column row">
+			<div class="column">
+<div class="ts  steps">
+		<div class="step">
+			<i class="write icon"></i>
+			<div class="content">
+				<div class="title">填寫</div>
+				<div class="description">周哈里窗表單</div>
+			</div>
+		</div>
+		<div class="ts step">
+			<i class="clone icon"></i>
+			<div class="content">
+				<div class="title">複製</div>
+				<div class="description">請記住代碼</div>
+			</div>
+		</div>
+		<div class="active step">
+			<i class="search icon"></i>
+			<div class="content">
+				<div class="title">查詢</div>
+				<div class="description">貼上您的代碼</div>
+			</div>
+		</div>
+		<div class="disabled step">
+				<i class="add user icon"></i>
+				<div class="content">
+					<div class="title">他人填寫</div>
+					<div class="description">請您的好友或家人為您填寫</div>
+				</div>
+			</div>
+			<div class="disabled step">
+					<i class="info icon"></i>
+					<div class="content">
+						<div class="title">結果</div>
+						<div class="description">觀看您的結果</div>
+					</div>
+				</div>	
+	</div>
+</div>
+</div>
+</div>
+<table width="1450" height="550">
 　<tr><td align="center" valign="center">
 <div class="ts action input" id="S_Change" >
 <input type="text" placeholder="輸入_token" id="Input_S">
@@ -37,7 +80,7 @@ background-size:cover;
 </td></tr>
 </table>
 <br><br>
----------------
+<!---------------
 <form action="search.php" method="get">
 <div class="ts error input" id="check">
 <input type="text" placeholder="輸入_token" id="_token">
@@ -65,7 +108,7 @@ background-size:cover;
 </div>
 </form>
 
-----------------
+---------------->
 <script>
 var x = document.getElementById("Search");
 var y=document.getElementById("Input_S");
@@ -92,7 +135,7 @@ function setCookie(cname,cvalue,exdays)
   document.cookie = cname + "=" + cvalue + "; " + expires;
 }
 function makeRequest() {
- alert ("函数已执行1!");
+
     t_Request = new XMLHttpRequest();
 
     if (!t_Request) {
@@ -100,7 +143,7 @@ function makeRequest() {
       return false;
     }
     t_Request.onreadystatechange =function(){
-alert ("函数已执行2!");
+
     if (t_Request.readyState == XMLHttpRequest.DONE) {
       if (t_Request.status == 200) {
 	var response =this.responseText;
@@ -125,7 +168,7 @@ alert ("函数已执行2!");
   t_Request.open("POST","http://csmu.oxygentw.net/tools/ap-apiv1/result/"/*"http://localhost/api/new.php"*/,true);
   t_Request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
   var T_V=document.getElementById('Input_S').value;
-    alert(T_V);
+   // alert(T_V);
   t_Request.send("token="+T_V);
 	}
 </script>

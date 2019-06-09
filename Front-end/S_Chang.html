@@ -5,6 +5,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.3/tocas.css">
 <!-- Tocas JS�G�Ҷ��P JavaScript �禡 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.3/tocas.js"></script>
+<style>
+    body{
+    background-image:url( 'http://localhost/Picture/illust_66772917_20180512_233450.jpg' );
+    background-repeat:no-repeat;
+    background-attachment:local;
+    background-position:center;
+    background-size:cover;
+          }
+</style>
 <script>
   function htmldecode(Str){
     var div = document.createElement('div');
@@ -40,26 +49,81 @@ function setCookie(cname,cvalue,exmins)
 </script>
 </head>
 <body >
-		<table width="1500" height="600" >
-      
+		<div class="ts grid">
+				<div class="fifteen column row"><div class="column"></div></div>
+				<div class="fifteen column row">
+			<div class="column">
+<div class="ts  steps">
+		<div class="step">
+			<i class="write icon"></i>
+			<div class="content">
+				<div class="title">填寫</div>
+				<div class="description">周哈里窗表單</div>
+			</div>
+		</div>
+		<div class="ts step">
+			<i class="clone icon"></i>
+			<div class="content">
+				<div class="title">複製</div>
+				<div class="description">請記住代碼</div>
+			</div>
+		</div>
+		<div class="ts step">
+			<i class="search icon"></i>
+			<div class="content">
+				<div class="title">查詢</div>
+				<div class="description">貼上您的代碼</div>
+			</div>
+		</div>
+		<div class="disabled step">
+				<i class="add user icon"></i>
+				<div class="content">
+					<div class="title">他人填寫</div>
+					<div class="description">請您的好友或家人為您填寫</div>
+				</div>
+			</div>
+			<div class="disabled step">
+					<i class="info icon"></i>
+					<div class="content">
+						<div class="title">結果</div>
+						<div class="description">觀看您的結果</div>
+					</div>
+				</div>	
+	</div>
+</div>
+</div>
+</div>
+		<table width="1500" height="500" >
 				<tr ><td align="center">
-					<p><button class="ts primary button" id="Result">察看結果</button></p>
-					
-					<p><button class="ts inverted button" id="O_List">(他人)填選</button></p>
+            <div class="ts center aligned three column grid">
+                <div class="column"></div>
+                <div class="column">
+            <div class="ts outlined message">
+           <br><br><br><br><br>
+          <p><button class="ts primary button" id="Result">察看結果</button></p>
+          <br><br><br><br>
+          <p><button class="ts inverted button" id="O_List">(他人)填選</button></p>
+          <br><br><br><br><br>
+        </div>
+        </div>
 				</td></tr>
 	<br>
 	<br>
 	</table>
 <script>
 
-  var S_token=getCookie("_token");    
+  var S_token=getCookie("_token"); 
+  if(S_token==""||S_token==null){
+alert("請求超時!請重新搜尋!!!");
+location.href='Search.html';
+  }
     var x = document.getElementById("Result");
 x.addEventListener("click", makeRequest);
     var y = document.getElementById("O_List");
 y.addEventListener("click", Convert);
 
   function makeRequest() {
- alert ("函数已执行1!");
+
     t_Request = new XMLHttpRequest();
 
     if (!t_Request) {
@@ -67,8 +131,8 @@ y.addEventListener("click", Convert);
       return false;
     }
     t_Request.onreadystatechange =function(){
-alert ("函数已执行2!");
-    if (t_Request.readyState == MXLHttpRequest.DONE) {
+
+    if (t_Request.readyState == XMLHttpRequest.DONE) {
       if (t_Request.status == 200) {
 	var response =this.responseText;
 var R_After_Decode=htmldecode(response)
@@ -76,7 +140,7 @@ var R_After_Decode=htmldecode(response)
   var H_Me=Get(R_After_Decode,"hiddenMe","cantSeeMe");
   var O_Me=Get(R_After_Decode,"openMe","hiddenMe");
   var Ct_Me=Get(R_After_Decode,"cantSeeMe","unknownMe");
-  //var U_Me=Get(response,"unknownMe");
+  var U_Me=JSON.stringify("???");
   setCookie("開放我",O_Me,5);
   setCookie("隱藏我",H_Me,5);
   setCookie("盲目我",Ct_Me,5);
@@ -89,10 +153,10 @@ var R_After_Decode=htmldecode(response)
 }
   t_Request.open("POST","http://csmu.oxygentw.net/tools/ap-apiv1/result/"/*"http://localhost/api/new.php"*/,true);
   t_Request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-  alert(S_token);
+  //alert(S_token);
   t_Request.send("token="+S_token);
   
-  setTimeout(function(){location.href='Result.html'},1000);
+  setTimeout(function(){location.href='Result.html'},500);
 	}
     function Convert(){
         location.href='P_List_O.html';
